@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lớp A5 - THPT Rạch Kiến - Xuân 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Quicksand', sans-serif; scroll-behavior: smooth; overflow-x: hidden; background-color: #fff5f5; }
+    .tết-font { font-family: 'Dancing Script', cursive; }
+    .tet-gradient { background: linear-gradient(to right, #f17070, #ff7272); }
+    
+    .section-content { display: none; min-height: 80vh; }
+    .section-active { display: block; animation: fadeIn 0.4s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lantern { position: fixed; top: -10px; width: 60px; z-index: 60; animation: swing 3s ease-in-out infinite alternate; transform-origin: top center; pointer-events: none; }
+    .lantern-left { left: 20px; }
+    .lantern-right { right: 20px; }
+    @keyframes swing { from { transform: rotate(-30deg); } to { transform: rotate(30deg); } }
+
+    .falling-petal {
+      position: fixed; top: -20px; animation: fall linear infinite; z-index: 100;
+      pointer-events: none; font-size: 20px; color: #FFD700;
+      text-shadow: 0 0 10px #fff700, 0 0 20px #ffae00;
+    }
+    @keyframes fall {
+      0% { transform: translate(0, 0) rotateZ(0deg); opacity: 1; }
+      100% { transform: translate(var(--x-end), 100vh) rotateZ(720deg); opacity: 0; }
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #fff700, #ffffff, #fff700);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: colorShift 3s ease-in-out infinite alternate;
+      background-size: 200%;
+    }
+    @keyframes colorShift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+    
+    #imgFull { animation: zoomIn 0.3s ease-out; }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  </style>
+</head>
+
+<body class="bg-red-50 text-gray-800">
+
+<img src=" longden.png" class="lantern lantern-left" alt="Lồng đèn">
+<img src=" longden.png" class="lantern lantern-right" alt="Lồng đèn">
+
+<div id="petal-container"></div>
+
+<header class="tet-gradient text-white p-6 shadow-xl text-center relative flex items-center justify-between md:justify-center">
+  <button id="hamburgerBtn" class="block md:hidden text-white p-2 z-50">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+  </button>
+
+  <h1 class="tết-font text-4xl md:text-5xl gradient-text">Lớp A5 - THPT Rạch Kiến</h1>
+  
+  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden" onclick="toggleMobileMenu()"></div>
+
+  <div id="mobileMenuContent" class="fixed top-0 left-0 w-64 h-full bg-red-800 shadow-lg z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="p-4 flex justify-between items-center bg-red-900 text-white">
+      <h2 class="text-xl font-bold">Menu A5</h2>
+      <button onclick="toggleMobileMenu()" class="text-2xl">&times;</button>
+    </div>
+    <nav class="py-2 text-white">
+      <button onclick="showPage('welcome')" class="block w-full text-left px-6 py-4 border-b border-red-700">🏠 Trang Chủ</button>
+      <button onclick="showPage('students')" class="block w-full text-left px-6 py-4 border-b border-red-700">👩‍🎓 Danh sách Lớp</button>
+      <button onclick="showPage('gallery')" class="block w-full text-left px-6 py-4 border-b border-red-700">📸 Hình ảnh</button>
+      <button onclick="showPage('events')" class="block w-full text-left px-6 py-4">📅 Sự kiện</button>
+    </nav>
+  </div>
+
+  <nav class="hidden md:block absolute right-6">
+    <ul class="flex space-x-6 font-bold">
+      <li><button onclick="showPage('welcome')" class="hover:text-yellow-300">Trang Chủ</button></li>
+      <li><button onclick="showPage('students')" class="hover:text-yellow-300">Danh sách Lớp</button></li>
+      <li><button onclick="showPage('gallery')" class="hover:text-yellow-300">Hình ảnh</button></li>
+      <li><button onclick="showPage('events')" class="hover:text-yellow-300">Sự kiện</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="p-4 max-w-4xl mx-auto mt-6">
+  
+  <section id="welcome" class="section-content section-active text-center">
+    <div class="bg-white p-10 rounded-3xl shadow-xl border-4 border-yellow-400">
+        <h2 class="tết-font text-4xl text-red-600 mb-6">Chúc Mừng Năm Mới 2026</h2>
+        <p class="text-gray-700 italic text-xl leading-relaxed">
+          "Xuân Bính Ngọ, chúc tập thể A5 luôn đoàn kết, <br>
+          Gặt hái nhiều thành công trong kỳ thi sắp tới. <br>
+          Vạn sự như ý - An khang thịnh vượng!"
+        </p>
+        <div class="mt-6 text-5xl">🧧🌸🍊</div>
+    </div>
+  </section>
+
+  <section id="students" class="section-content">
+    <h2 class="text-3xl font-bold text-red-700 mb-6 text-center">👩‍🎓 DANH SÁCH THÀNH VIÊN</h2>
+    <div id="studentListGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  </section>
+
+  <section id="gallery" class="section-content">
+    <h2 class="text-3xl font-bold text-red-700 mb-6 text-center">📸 KỶ NIỆM LỚP</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-gray-200 rounded-xl overflow-hidden shadow-md">
+            <img src=" tapthelop.jpg" onclick="zoomImage(this)" class="h-48 w-full object-cover cursor-pointer hover:scale-105 transition-transform" alt="Tập thể lớp">
+        </div>
+        <div class="bg-gray-200 h-48 rounded-xl flex items-center justify-center text-gray-500 italic border-2 border-dashed border-gray-400">Chưa có ảnh</div>
+    </div>
+  </section>
+
+  <section id="events" class="section-content">
+    <h2 class="text-3xl font-bold text-red-700 mb-6 text-center">📅 LỊCH HOẠT ĐỘNG</h2>
+    <div class="space-y-4">
+        <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-red-500 cursor-pointer hover:bg-red-50 transition-all group" 
+             onclick="zoomImage('C:\\Users\\HOME\\Desktop\\A5WEB\\Tloc.png')">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-bold text-xl text-red-600 group-hover:underline">Hội Xuân Rạch Kiến</h3>
+                    <p class="text-gray-600">Thời gian: Tháng 1/2026</p>
+                </div>
+                <div class="text-red-500 text-sm font-bold animate-pulse">
+                    Bấm để xem ảnh 📸
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+</main>
+
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-[200] hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeImage()">
+    <span class="absolute top-5 right-5 text-white text-4xl">&times;</span>
+    <img id="imgFull" src="" class="max-w-full max-h-full rounded-lg shadow-2xl">
+</div>
+
+<div id="profileModal" class="fixed inset-0 bg-black bg-opacity-60 z-[100] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full overflow-hidden shadow-2xl transform transition-all scale-95 opacity-0" id="modalContent">
+        <div class="bg-red-600 p-8 text-center relative">
+            <button onclick="closeProfile()" class="absolute top-2 right-3 text-white text-3xl">&times;</button>
+            <div class="w-24 h-24 bg-white rounded-full mx-auto border-4 border-yellow-400 overflow-hidden">
+                <img id="p-avatar" src="" class="w-full h-full object-cover" alt="Avatar">
+            </div>
+            <h3 id="p-name" class="text-white text-2xl font-bold mt-3">Tên Học Sinh</h3>
+            <p id="p-id" class="text-red-100 italic">ID: A5-XX</p>
+        </div>
+        <div class="p-6 space-y-4 text-lg">
+            <p><strong>🎂 Năm sinh:</strong> 2008</p>
+            <p><strong>🌟 Sở thích:</strong> <span id="p-hobby">Đang cập nhật...</span></p>
+            <button onclick="closeProfile()" class="w-full bg-red-600 text-white py-3 rounded-xl font-bold shadow-lg">Đóng</button>
+        </div>
+    </div>
+</div>
+
+<footer class="tet-gradient text-white text-center p-6 mt-10">
+  <p>© 2026 - Tập thể lớp A5 THPT Rạch Kiến</p>
+</footer>
+
+<script>
+/* ================= HIỆU ỨNG RƠI ================= */
+function createPetal() {
+  const container = document.getElementById('petal-container');
+  if (container.childElementCount > 20) return;
+
+  const petal = document.createElement('div');
+  petal.classList.add('falling-petal');
+  petal.innerHTML = Math.random() > 0.5 ? '🌸' : '🧧'; 
+  
+  const startX = Math.random() * window.innerWidth;
+  const duration = Math.random() * 5 + 6;
+  const endX = (Math.random() - 0.5) * 200;
+
+  petal.style.left = `${startX}px`;
+  petal.style.animationDuration = `${duration}s`;
+  petal.style.setProperty('--x-end', `${endX}px`);
+
+  container.appendChild(petal);
+  petal.onanimationend = () => petal.remove();
+}
+setInterval(createPetal, 700);
+
+/* ================= CHUYỂN TRANG ================= */
+function showPage(pageId) {
+  document.querySelectorAll('.section-content').forEach(section => {
+    section.classList.remove('section-active');
+  });
+  document.getElementById(pageId).classList.add('section-active');
+  window.scrollTo(0,0);
+  if (!document.getElementById('mobileMenuContent').classList.contains('-translate-x-full')) {
+    toggleMobileMenu();
+  }
+}
+
+function toggleMobileMenu() {
+  document.getElementById('mobileMenuContent').classList.toggle('-translate-x-full');
+  document.getElementById('mobileMenuOverlay').classList.toggle('hidden');
+}
+document.getElementById('hamburgerBtn').onclick = toggleMobileMenu;
+
+/* ================= PHÓNG TO ẢNH ================= */
+function zoomImage(input) {
+    const modal = document.getElementById('imageModal');
+    const fullImg = document.getElementById('imgFull');
+    
+    // Kiểm tra xem input là thẻ HTML hay là chuỗi đường dẫn
+    if (typeof input === 'string') {
+        fullImg.src = input;
+    } else if (input.src) {
+        fullImg.src = input.src;
+    }
+
+    modal.classList.replace('hidden', 'flex');
+}
+
+function closeImage() {
+    document.getElementById('imageModal').classList.replace('flex', 'hidden');
+}
+
+/* ================= DANH SÁCH LỚP ================= */
+const listHS = ["Đỗ Đức Hoàng An", "Nguyễn Gia An", "Nguyễn Tuấn Anh", "Huỳnh Trần Gia Bảo", "Phan Thế Bảo", "Thái Hoàng Bảo", "Huỳnh Thị Minh Châu", "Dương Ngọc Duy", "Trần Bảo Duy", "Lê Thị Hồng Đào", "Đỗ Bùi Tiến Đạt", "Nguyễn Huỳnh Đức", "Bùi Gia Hân", "Huỳnh Gia Hân", "Nguyễn Thị Ngọc Hân", "Lê Minh Hiếu", "Nguyễn Minh Hiếu", "Phạm Nguyễn Hoàng Huy", "Phùng Thị Ngọc Huyền", "Nguyễn Phạm Đăng Khoa", "Phạm Nguyễn Anh Khoa", "Võ Thành Lộc", "Võ Tú Mẫn", "Đặng Kim Ngân", "Lại Thị Thu Ngân", "Phạm Thị Kim Ngân", "Trần Nguyễn Song Nghi", "Mai Đức Phát", "Nguyễn Tấn Phát", "Lê Nguyễn Hoàng Phú", "Bùi Phạm Nguyên Phương", "Nguyễn Quỳnh Lam Phương", "Lê Hoàng Quân", "Trần Như Quỳnh", "Đặng Văn Thanh", "Trần Công Thành", "Lê Nguyễn Thu Thùy", "Nguyễn Phúc Tiến", "Lê Thanh Tùng", "Trần Kim Tuyến", "Phạm Thị Thanh Tuyết", "Lê Thị Ngọc Vân", "Phan Thanh Việt", "Nguyễn Trần Phương Vy", "Phạm Ngọc Như Ý"];
+
+function renderStudents() {
+    const grid = document.getElementById('studentListGrid');
+    grid.innerHTML = "";
+    listHS.forEach((name, index) => {
+        const id = index + 1;
+        const div = document.createElement('div');
+        div.className = "bg-white p-4 rounded-xl shadow-md border-b-4 border-red-600 hover:bg-red-50 cursor-pointer flex justify-between items-center font-bold transition-all";
+        div.onclick = () => openProfile(id, name);
+        div.innerHTML = `<span>${id}. ${name}</span> <span class="text-yellow-500">🌸</span>`;
+        grid.appendChild(div);
+    });
+}
+
+function openProfile(id, name) {
+    const modal = document.getElementById('profileModal');
+    const content = document.getElementById('modalContent');
+    const avatar = document.getElementById('p-avatar');
+
+    document.getElementById('p-name').textContent = name;
+    document.getElementById('p-id').textContent = `ID: A5-${id < 10 ? '0'+id : id}`;
+    
+    // Tự động tìm ảnh theo ID trong thư mục hocsinh
+    avatar.src = `C:\\Users\\HOME\\Desktop\\A5WEB\\hocsinh\\${id}.jpg`;
+    
+    // Nếu không có ảnh thì hiện ảnh placeholder
+    avatar.onerror = function() {
+        this.src = "https://via.placeholder.com/150?text=A5";
+    };
+
+    modal.classList.replace('hidden', 'flex');
+    setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+    }, 10);
+}
+
+function closeProfile() {
+    const modal = document.getElementById('profileModal');
+    const content = document.getElementById('modalContent');
+    content.classList.add('scale-95', 'opacity-0');
+    setTimeout(() => modal.classList.replace('flex', 'hidden'), 200);
+}
+
+window.onload = renderStudents;
+</script>
+
+</body>
+</html>
