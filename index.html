@@ -41,6 +41,17 @@
     
     #imgFull { animation: zoomIn 0.3s ease-out; }
     @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    /* Hiệu ứng mờ nền khi phóng to */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 50;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
   </style>
 </head>
 
@@ -114,13 +125,50 @@
 
   <section id="events" class="section-content">
     <h2 class="text-3xl font-bold text-red-700 mb-6 text-center">📅 LỊCH HOẠT ĐỘNG</h2>
+ class="bg-red-50 p-8">
+
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl border-2 border-yellow-400">
+        <div class="p-4 text-center">
+            <h2 class="text-2xl font-bold text-red-600 mb-4">🌸 CHÚC MỪNG NĂM MỚI 2026 🌸</h2>
+            <p class="mb-4 text-gray-600 italic">Bấm vào ảnh bên dưới để xem chi tiết</p>
+            
+            <div class="relative overflow-hidden rounded-lg">
+                <img src="Tloc.png" 
+                     onclick="zoomImage(this)" 
+                     class="h-64 w-full object-cover cursor-pointer hover:scale-110 transition-transform duration-500 ease-in-out" 
+                     alt="Hội Xuân 2026">
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" onclick="this.style.display='none'">
+        <img id="zoomedImg" class="max-w-[90%] max-height-[90%] rounded-lg shadow-2xl">
+    </div>
+
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl border-2 border-yellow-400">
+        <div class="p-4 text-center">
+            <h2 class="text-2xl font-bold text-red-600 mb-4">🌸 CHÚC MỪNG NĂM MỚI 2026 🌸</h2>
+            <p class="mb-4 text-gray-600 italic">Bấm vào ảnh bên dưới để xem chi tiết</p>
+            
+            <div class="relative overflow-hidden rounded-lg">
+                <img src="https://picsum.photos/800/600?random=1" 
+                     onclick="zoomImage(this)" 
+                     class="h-64 w-full object-cover cursor-pointer hover:scale-110 transition-transform duration-500 ease-in-out" 
+                     alt="Hội Xuân 2026">
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" onclick="this.style.display='none'">
+        <img id="zoomedImg" class="max-w-[90%] max-height-[90%] rounded-lg shadow-2xl">
+    </div>
     <div class="space-y-4">
         <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-red-500 cursor-pointer hover:bg-red-50 transition-all group" 
              onclick="zoomImage('C:\\Users\\HOME\\Desktop\\A5WEB\\Tloc.png')">
             <div class="flex justify-between items-center">
                 <div>
                     <h3 class="font-bold text-xl text-red-600 group-hover:underline">Hội Xuân Rạch Kiến</h3>
-                    <p class="text-gray-600">Thời gian: Tháng 1/2026</p>
+                    <p class="text-gray-600">Thời gian: 9 Tháng 2/2026</p>
                 </div>
                 <div class="text-red-500 text-sm font-bold animate-pulse">
                     Bấm để xem ảnh 📸
@@ -271,5 +319,6 @@ window.onload = renderStudents;
 </body>
 
 </html>
+
 
 
