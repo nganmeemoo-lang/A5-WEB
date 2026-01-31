@@ -123,7 +123,36 @@
     </div>
   </section>
   
+<section id="events" class="section-content">
+  <h2 class="text-3xl font-bold text-red-700 mb-6 text-center">📅 LỊCH HOẠT ĐỘNG</h2>
+  
+  <div class="space-y-4">
+    <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-red-500 hover:bg-red-50 transition-all flex flex-col md:flex-row justify-between items-center gap-4">
+      
+      <div class="flex-1">
+        <h3 class="font-bold text-2xl text-red-600">Hội Xuân Rạch Kiến</h3>
+        <p class="text-gray-600 flex items-center gap-2">
+          <span class="text-lg">📅</span> Thời gian: Tháng 1/2026
+        </p>
+        <p class="text-gray-500 mt-2 italic text-sm">
+          📍 Địa điểm: Sân trường THPT Rạch Kiến
+        </p>
+      </div>
 
+      <div class="relative group">
+        <div class="text-red-500 text-xs font-bold animate-pulse mb-1 text-center">
+          Bấm để phóng to 📸
+        </div>
+        <img src="Tloc.png" 
+             onclick="zoomImage(this)" 
+             class="h-32 w-48 object-cover rounded-xl border-2 border-red-200 cursor-zoom-in group-hover:border-yellow-400 group-hover:scale-105 transition-all shadow-sm" 
+             alt="Hội Xuân 2026"
+             onerror="this.src='https://via.placeholder.com/200x150?text=A5+Hoi+Xuan'">
+      </div>
+
+    </div>
+  </div>
+</section>
 
 </main>
 
@@ -266,6 +295,7 @@ window.onload = renderStudents;
 </body>
 
 </html>
+
 
 
 
