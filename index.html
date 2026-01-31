@@ -81,6 +81,7 @@
       <button onclick="showPage('students')" class="block w-full text-left px-6 py-4 border-b border-red-700">👩‍🎓 Danh sách Lớp</button>
       <button onclick="showPage('gallery')" class="block w-full text-left px-6 py-4 border-b border-red-700">📸 Hình ảnh</button>
       <button onclick="showPage('events')" class="block w-full text-left px-6 py-4">📅 Sự kiện</button>
+      <button onclick="showPage('leadership')" class="block w-full text-left px-6 py-4 border-b border-red-700">⭐ Ban Cán Sự</button>
     </nav>
   </div>
 
@@ -90,6 +91,8 @@
       <li><button onclick="showPage('students')" class="hover:text-yellow-300">Danh sách Lớp</button></li>
       <li><button onclick="showPage('gallery')" class="hover:text-yellow-300">Hình ảnh</button></li>
       <li><button onclick="showPage('events')" class="hover:text-yellow-300">Sự kiện</button></li>
+      <li></li> <button onclick="showPage('leadership')" class="block w-full text-left px-6 py-4 border-b border-red-700">⭐ Ban Cán Sự</button></li>
+                                                                                               
     </ul>
   </nav>
 </header>
@@ -153,7 +156,60 @@
     </div>
   </div>
 </section>
+<section id="leadership" class="section-content">
+  <h2 class="text-3xl font-bold text-red-700 mb-8 text-center uppercase tracking-widest">
+    ⭐ Bộ Khung Lớp A5 ⭐
+  </h2>
 
+  <div class="flex flex-col items-center gap-8">
+    
+    <div class="w-full max-w-sm">
+      <div class="bg-gradient-to-b from-yellow-400 to-yellow-600 p-1 rounded-2xl shadow-2xl transform hover:-translate-y-2 transition-all">
+        <div class="bg-white rounded-xl p-6 text-center">
+          <div class="w-24 h-24 mx-auto mb-4 relative">
+             <img src="hocsinh/lop-truong.jpg" onerror="this.src='https://via.placeholder.com/150?text=A5'" 
+                  class="w-full h-full object-cover rounded-full border-4 border-yellow-500 shadow-lg">
+             <span class="absolute -bottom-2 -right-2 text-3xl">👑</span>
+          </div>
+          <h3 class="text-xl font-bold text-red-700">Nguyễn Văn A</h3>
+          <p class="text-gray-600 font-bold uppercase text-sm tracking-tighter">Lớp Trưởng</p>
+          <p class="text-xs text-gray-400 mt-2 italic">"Đầu tàu gương mẫu của A5"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+      
+      <div class="bg-white p-5 rounded-2xl shadow-lg border-t-4 border-blue-500 text-center hover:shadow-2xl transition-all">
+        <div class="w-20 h-20 mx-auto mb-3">
+           <img src="hocsinh/lp-hoc-tap.jpg" onerror="this.src='https://via.placeholder.com/150?text=A5'" 
+                class="w-full h-full object-cover rounded-full border-2 border-blue-400">
+        </div>
+        <h4 class="font-bold text-gray-800">Trần Thị B</h4>
+        <p class="text-blue-600 text-sm font-semibold">Lớp phó Học tập</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl shadow-lg border-t-4 border-green-500 text-center hover:shadow-2xl transition-all">
+        <div class="w-20 h-20 mx-auto mb-3">
+           <img src="hocsinh/lp-phong-trao.jpg" onerror="this.src='https://via.placeholder.com/150?text=A5'" 
+                class="w-full h-full object-cover rounded-full border-2 border-green-400">
+        </div>
+        <h4 class="font-bold text-gray-800">Lê Văn C</h4>
+        <p class="text-green-600 text-sm font-semibold">Lớp phó Phong trào</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl shadow-lg border-t-4 border-red-500 text-center hover:shadow-2xl transition-all">
+        <div class="w-20 h-20 mx-auto mb-3">
+           <img src="hocsinh/bi-thu.jpg" onerror="this.src='https://via.placeholder.com/150?text=A5'" 
+                class="w-full h-full object-cover rounded-full border-2 border-red-400">
+        </div>
+        <h4 class="font-bold text-gray-800">Phạm Thị D</h4>
+        <p class="text-red-600 text-sm font-semibold">Bí thư Chi đoàn</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 </main>
 
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-[200] hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeImage()">
@@ -295,6 +351,7 @@ window.onload = renderStudents;
 </body>
 
 </html>
+
 
 
 
