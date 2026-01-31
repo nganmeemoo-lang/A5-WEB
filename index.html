@@ -335,6 +335,10 @@ const listHS = ["Đỗ Đức Hoàng An", "Nguyễn Gia An", "Nguyễn Tuấn An
 
 function renderStudents() {
     const grid = document.getElementById('studentListGrid');
+    if (!grid) {
+        console.error("Không tìm thấy thẻ có id='studentListGrid'!");
+        return;
+    }
     grid.innerHTML = "";
     listHS.forEach((name, index) => {
         const id = index + 1;
@@ -345,6 +349,9 @@ function renderStudents() {
         grid.appendChild(div);
     });
 }
+
+// Gọi hàm khi trang web tải xong
+window.addEventListener('DOMContentLoaded', renderStudents);
 
 function openProfile(id, name) {
     const modal = document.getElementById('profileModal');
@@ -376,12 +383,16 @@ function closeProfile() {
     setTimeout(() => modal.classList.replace('flex', 'hidden'), 200);
 }
 
-window.onload = renderStudents;
+window.onload = function() {
+    renderStudents(); // Gọi hàm vẽ danh sách lớp
+    // Nếu có thêm hàm tạo pháo hoa thì gọi ở đây luôn
+};
 </script>
 
 </body>
 
 </html>
+
 
 
 
