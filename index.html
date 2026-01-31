@@ -122,62 +122,28 @@
         <div class="bg-gray-200 h-48 rounded-xl flex items-center justify-center text-gray-500 italic border-2 border-dashed border-gray-400">Chưa có ảnh</div>
     </div>
   </section>
-
-  <section id="events" class="section-content">
+ <section id="events" class="section-content">
     <h2 class="text-3xl font-bold text-red-700 mb-6 text-center">📅 LỊCH HOẠT ĐỘNG</h2>
- class="bg-red-50 p-8">
-
-    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl border-2 border-yellow-400">
-        <div class="p-4 text-center">
-            <h2 class="text-2xl font-bold text-red-600 mb-4">🌸 CHÚC MỪNG NĂM MỚI 2026 🌸</h2>
-            <p class="mb-4 text-gray-600 italic">Bấm vào ảnh bên dưới để xem chi tiết</p>
-            
-            <div class="relative overflow-hidden rounded-lg">
-                <img src="Tloc.png" 
-                     onclick="zoomImage(this)" 
-                     class="h-64 w-full object-cover cursor-pointer hover:scale-110 transition-transform duration-500 ease-in-out" 
-                     alt="Hội Xuân 2026">
-            </div>
-        </div>
-    </div>
-
-    <div id="overlay" onclick="this.style.display='none'">
-        <img id="zoomedImg" class="max-w-[90%] max-height-[90%] rounded-lg shadow-2xl">
-    </div>
-
-    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl border-2 border-yellow-400">
-        <div class="p-4 text-center">
-            <h2 class="text-2xl font-bold text-red-600 mb-4">🌸 CHÚC MỪNG NĂM MỚI 2026 🌸</h2>
-            <p class="mb-4 text-gray-600 italic">Bấm vào ảnh bên dưới để xem chi tiết</p>
-            
-            <div class="relative overflow-hidden rounded-lg">
-                <img src="https://picsum.photos/800/600?random=1" 
-                     onclick="zoomImage(this)" 
-                     class="h-64 w-full object-cover cursor-pointer hover:scale-110 transition-transform duration-500 ease-in-out" 
-                     alt="Hội Xuân 2026">
-            </div>
-        </div>
-    </div>
-
-    <div id="overlay" onclick="this.style.display='none'">
-        <img id="zoomedImg" class="max-w-[90%] max-height-[90%] rounded-lg shadow-2xl">
-    </div>
     <div class="space-y-4">
-        <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-red-500 cursor-pointer hover:bg-red-50 transition-all group" 
-             onclick="zoomImage('C:\\Users\\HOME\\Desktop\\A5WEB\\Tloc.png')">
-            <div class="flex justify-between items-center">
+        <div class="bg-white p-6 rounded-2xl shadow-md border-l-8 border-red-500 hover:bg-red-50 transition-all group">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h3 class="font-bold text-xl text-red-600 group-hover:underline">Hội Xuân Rạch Kiến</h3>
-                    <p class="text-gray-600">Thời gian: 9 Tháng 2/2026</p>
+                    <h3 class="font-bold text-2xl text-red-600">Hội Xuân Rạch Kiến</h3>
+                    <p class="text-gray-600 text-lg">📅 Thời gian: 9 Tháng 2/2026</p>
+                    <p class="text-red-500 font-medium mt-2 animate-pulse">Bấm vào ảnh để xem chi tiết poster 📸</p>
                 </div>
-                <div class="text-red-500 text-sm font-bold animate-pulse">
-                    Bấm để xem ảnh 📸
-                  <img src="Tloc.png" onclick="zoomImage(this)" class="h-48 w-full object-cover cursor-pointer hover:scale-105 transition-transform" alt="Hội Xuân 2026">
+                <div class="w-full md:w-48 overflow-hidden rounded-xl border-2 border-yellow-400">
+                    <img src="Tloc.png" 
+                         onclick="zoomImage(this)" 
+                         class="h-48 w-full object-cover cursor-pointer hover:scale-110 transition-transform duration-500" 
+                         alt="Hội Xuân 2026"
+                         onerror="this.src='https://via.placeholder.com/300x400?text=Anh+Hoi+Xuan'">
                 </div>
             </div>
         </div>
     </div>
   </section>
+
 </main>
 
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-[200] hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeImage()">
@@ -319,6 +285,7 @@ window.onload = renderStudents;
 </body>
 
 </html>
+
 
 
 
